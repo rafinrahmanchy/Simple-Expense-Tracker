@@ -30,7 +30,7 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 
 ## Demo
 
-![Expense Tracker Demo](Resources/Demo%20screenshot.png)
+![Expense Tracker Demo](Resources/demo-animation.gif)
 
 ## Technical Highlights
 
