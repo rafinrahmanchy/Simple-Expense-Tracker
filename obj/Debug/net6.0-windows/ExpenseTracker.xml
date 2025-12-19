@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExpenseTracker</name>
+    </assembly>
+    <members>
+        <member name="T:ExpenseTracker.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.App.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            Handles the startup event of the application.
+            Creates and shows the main window.
+            </summary>
+            <param name="e">The startup event arguments.</param>
+        </member>
+        <member name="M:ExpenseTracker.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:ExpenseTracker.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the MainWindow class.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ExpenseTracker.Models.Expense">
+            <summary>
+            Represents a single expense entry in the Expense Tracker application.
+            Implements INotifyPropertyChanged to support data binding in the UI.
+            </summary>
+        </member>
+        <member name="E:ExpenseTracker.Models.Expense.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.Models.Expense.Id">
+            <summary>
+            Gets or sets the unique identifier for this expense.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.Models.Expense.Description">
+            <summary>
+            Gets or sets the description of the expense (e.g., "Groceries", "Gas").
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.Models.Expense.Amount">
+            <summary>
+            Gets or sets the amount spent in this expense.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.Models.Expense.Date">
+            <summary>
+            Gets or sets the date when the expense occurred.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.Models.Expense.DisplayDate">
+            <summary>
+            Gets a formatted string representation of the expense date.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.Models.Expense.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the PropertyChanged event for the specified property.
+            </summary>
+            <param name="name">The name of the property that changed.</param>
+        </member>
+        <member name="T:ExpenseTracker.Services.FileService">
+            <summary>
+            Service for handling file I/O operations for expense data persistence.
+            Uses JSON serialization to store and retrieve expense records.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.Services.FileService.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the FileService class.
+            </summary>
+            <param name="fileName">Optional filename for the data store. Defaults to "expenses.json"</param>
+        </member>
+        <member name="M:ExpenseTracker.Services.FileService.SaveData(System.Collections.Generic.IEnumerable{ExpenseTracker.Models.Expense})">
+            <summary>
+            Saves a collection of expenses to the JSON file.
+            </summary>
+            <param name="expenses">The collection of expenses to save.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when expenses is null.</exception>
+            <exception cref="T:System.IO.IOException">Thrown when file I/O operation fails.</exception>
+        </member>
+        <member name="M:ExpenseTracker.Services.FileService.LoadData">
+            <summary>
+            Loads expenses from the JSON file.
+            </summary>
+            <returns>A list of expenses, or an empty list if the file doesn't exist.</returns>
+            <exception cref="T:System.IO.IOException">Thrown when file I/O operation fails.</exception>
+        </member>
+        <member name="M:ExpenseTracker.Services.FileService.GetFilePath">
+            <summary>
+            Gets the full file path for the data store.
+            </summary>
+            <returns>The complete file path.</returns>
+        </member>
+        <member name="M:ExpenseTracker.Services.FileService.FileExists">
+            <summary>
+            Checks if the data file exists.
+            </summary>
+            <returns>True if the file exists; otherwise, false.</returns>
+        </member>
+        <member name="T:ExpenseTracker.ViewModels.MainViewModel">
+            <summary>
+            Main view model for the Expense Tracker application.
+            Manages the state of expenses, handles user interactions, and coordinates with the FileService.
+            </summary>
+        </member>
+        <member name="E:ExpenseTracker.ViewModels.MainViewModel.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.Expenses">
+            <summary>
+            Gets the observable collection of all expenses.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.SelectedExpense">
+            <summary>
+            Gets or sets the currently selected expense from the list.
+            Populates input fields when an expense is selected.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.DescriptionInput">
+            <summary>
+            Gets or sets the description input for adding/editing expenses.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.AmountInput">
+            <summary>
+            Gets or sets the amount input for adding/editing expenses.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.DateInput">
+            <summary>
+            Gets or sets the date input for adding/editing expenses.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.MonthSummary">
+            <summary>
+            Gets or sets the monthly summary text.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.AddCommand">
+            <summary>
+            Gets the command for adding a new expense.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.UpdateCommand">
+            <summary>
+            Gets the command for updating the selected expense.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.DeleteCommand">
+            <summary>
+            Gets the command for deleting the selected expense.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.ClearSelectionCommand">
+            <summary>
+            Gets the command for clearing the selection and resetting the form.
+            </summary>
+        </member>
+        <member name="P:ExpenseTracker.ViewModels.MainViewModel.CalculateSummaryCommand">
+            <summary>
+            Gets the command for calculating the monthly summary.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.MainViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the MainViewModel class.
+            Initializes commands and loads initial data from storage.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.MainViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the PropertyChanged event for the specified property.
+            </summary>
+            <param name="name">The name of the property that changed.</param>
+        </member>
+        <member name="T:ExpenseTracker.ViewModels.RelayCommand">
+            <summary>
+            A generic command implementation for RelayCommand pattern.
+            This implementation allows binding commands in MVVM patterns with support for can execute predicates.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>
+            Initializes a new instance of the RelayCommand class.
+            </summary>
+            <param name="execute">The action to execute when the command is invoked.</param>
+            <param name="canExecute">Optional predicate to determine if the command can be executed.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when execute is null.</exception>
+        </member>
+        <member name="E:ExpenseTracker.ViewModels.RelayCommand.CanExecuteChanged">
+            <summary>
+            Occurs when the execution state of the command changes.
+            </summary>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Determines whether the command can execute in its current state.
+            </summary>
+            <param name="parameter">The command parameter.</param>
+            <returns>True if the command can be executed; otherwise, false.</returns>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.RelayCommand.Execute(System.Object)">
+            <summary>
+            Executes the command.
+            </summary>
+            <param name="parameter">The command parameter.</param>
+        </member>
+        <member name="M:ExpenseTracker.ViewModels.RelayCommand.RaiseCanExecuteChanged">
+            <summary>
+            Raises the CanExecuteChanged event to notify that the command's execution state may have changed.
+            </summary>
+        </member>
+    </members>
+</doc>

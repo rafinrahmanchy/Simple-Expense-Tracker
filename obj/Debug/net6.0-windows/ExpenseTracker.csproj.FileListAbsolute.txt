@@ -1,0 +1,46 @@
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.exe
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.deps.json
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.runtimeconfig.json
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.pdb
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\bin\Debug\net6.0-windows\ExpenseTracker.xml
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker_MarkupCompile.cache
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker_MarkupCompile.lref
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.g.resources
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.AssemblyInfoInputs.cache
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.AssemblyInfo.cs
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.csproj.CoreCompileInputs.cache
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\refint\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.xml
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.pdb
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ExpenseTracker.genruntimeconfig.cache
+C:\Users\ACER\OneDrive\Desktop\Expense Tracker\obj\Debug\net6.0-windows\ref\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.exe
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.deps.json
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.runtimeconfig.json
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.pdb
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\bin\Debug\net6.0-windows\ExpenseTracker.xml
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker_MarkupCompile.cache
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker_MarkupCompile.lref
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.g.resources
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.AssemblyInfoInputs.cache
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.AssemblyInfo.cs
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.csproj.CoreCompileInputs.cache
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\refint\ExpenseTracker.dll
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.xml
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.pdb
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ExpenseTracker.genruntimeconfig.cache
+C:\Users\ACER\OneDrive\Desktop\Simple-Expense-Tracker-main\obj\Debug\net6.0-windows\ref\ExpenseTracker.dll
