@@ -351,9 +351,9 @@ Requirements:
 ## Author
 
 **Your Name**
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+- Email: rafinrahman24@gmail.com
+- GitHub: [@yourusername](https://github.com/rafinrahmanchy)
+- LinkedIn: [Your Profile](https://linkedin.com/in/rafinrahmanchy)
 
 ## Acknowledgments
 
@@ -366,13 +366,13 @@ Requirements:
 
 For issues, questions, or suggestions:
 
-1. **GitHub Issues:** [Create an issue](https://github.com/yourusername/ExpenseTracker/issues)
-2. **Email:** your.email@example.com
-3. **Discussions:** [GitHub Discussions](https://github.com/yourusername/ExpenseTracker/discussions)
+1. **GitHub Issues:** [Create an issue](https://github.com/rafinrahmanchy/Simple-Expense-Tracker/issues)
+2. **Email:** rafinrahman24@gmail.com
+3. **Discussions:** [GitHub Discussions](https://github.com/rafinrahmanchy/Simple-Expense-Tracker/discussions)
 
 ---
 
-**Last Updated:** December 2024
+**Last Updated:** December 2025
 **Version:** 1.0.0
 **Status:** ✅ Production Ready
 
