@@ -352,8 +352,8 @@ Requirements:
 
 **Your Name**
 - Email: rafinrahman24@gmail.com
-- GitHub: [@yourusername](https://github.com/rafinrahmanchy)
-- LinkedIn: [Your Profile](https://linkedin.com/in/rafinrahmanchy)
+- GitHub: [@rafinrahmanchy](https://github.com/rafinrahmanchy)
+- LinkedIn: [Rafin Rahman Chy](https://linkedin.com/in/rafinrahmanchy)
 
 ## Acknowledgments
 
