@@ -1,4 +1,4 @@
-# Expense Tracker
+# Simple Expense Tracker
 
 A modern, user-friendly WPF desktop application for tracking and managing personal expenses with persistent JSON-based storage. This semester final project demonstrates best practices in C# development, including proper error handling, data validation, MVVM architecture, and file I/O operations.
 
