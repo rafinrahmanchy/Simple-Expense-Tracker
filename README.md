@@ -178,15 +178,15 @@ Data Storage:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    View (XAML UI)                    │
-│              MainWindow.xaml                         │
-│            - DataGrid for expenses                   │
-│            - Input controls                          │
-│            - Command buttons                         │
+│                    View (XAML UI)                   │
+│              MainWindow.xaml                        │
+│            - DataGrid for expenses                  │
+│            - Input controls                         │
+│            - Command buttons                        │
 └─────────────────┬───────────────────────────────────┘
                   │ Data Binding
 ┌─────────────────▼───────────────────────────────────┐
-│              ViewModel (MVVM Logic)                  │
+│              ViewModel (MVVM Logic)                 │
 │           MainViewModel.cs                          │
 │        - INotifyPropertyChanged                     │
 │        - Command implementations                    │
@@ -194,8 +194,8 @@ Data Storage:
 └─────────────────┬───────────────────────────────────┘
                   │ Method Calls
 ┌─────────────────▼───────────────────────────────────┐
-│        Services & Models (Data Layer)                │
-│   - FileService.cs (persistence)                     │
+│        Services & Models (Data Layer)               │
+│   - FileService.cs (persistence)                    │
 │   - Expense.cs (data model)                         │
 │   - JSON storage                                    │
 └─────────────────────────────────────────────────────┘
