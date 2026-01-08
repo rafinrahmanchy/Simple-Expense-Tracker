@@ -69,7 +69,7 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 ## Requirements
 
 - **Operating System:** Windows 7 or later
-- **.NET Runtime:** .NET 6.0 or later
+- **.NET Desktop Runtime:** .NET 6.0 or later
 - **RAM:** 256 MB minimum
 - **Disk Space:** 100 MB for installation
 
