@@ -79,8 +79,8 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/ExpenseTracker.git
-   cd ExpenseTracker
+   git clone https://github.com/rafinrahmanchy/Simple-Expense-Tracker.git
+   cd Simple-Expense-Tracker
    ```
 
 2. **Ensure Prerequisites**
