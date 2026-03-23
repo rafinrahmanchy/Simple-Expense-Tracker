@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -7,6 +8,10 @@ using System.Windows;
 using System.Windows.Input;
 using ExpenseTracker.Models;
 using ExpenseTracker.Services;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 
 namespace ExpenseTracker.ViewModels
 {
@@ -23,6 +28,8 @@ namespace ExpenseTracker.ViewModels
         private DateTime _dateInput = DateTime.Now;
         private string _monthSummary = string.Empty;
         private bool _isUpdatingSelectedExpense = false;
+        private ISeries[] _pieChartSeries = Array.Empty<ISeries>();
+        private ISeries[] _lineChartSeries = Array.Empty<ISeries>();
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -107,6 +114,24 @@ namespace ExpenseTracker.ViewModels
         {
             get => _monthSummary;
             set { _monthSummary = value; OnPropertyChanged(); }
+        }
+
+        /// <summary>
+        /// Gets or sets the pie chart series for expense breakdown.
+        /// </summary>
+        public ISeries[] PieChartSeries
+        {
+            get => _pieChartSeries;
+            set { _pieChartSeries = value; OnPropertyChanged(); }
+        }
+
+        /// <summary>
+        /// Gets or sets the line chart series for spending trends.
+        /// </summary>
+        public ISeries[] LineChartSeries
+        {
+            get => _lineChartSeries;
+            set { _lineChartSeries = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -284,6 +309,103 @@ namespace ExpenseTracker.ViewModels
             {
                 MonthSummary = "No expenses recorded.";
             }
+
+            UpdateCharts();
+        }
+
+        private void UpdateCharts()
+        {
+            UpdatePieChart();
+            UpdateLineChart();
+        }
+
+        private void UpdatePieChart()
+        {
+            if (!Expenses.Any())
+            {
+                PieChartSeries = Array.Empty<ISeries>();
+                return;
+            }
+
+            // Group expenses by description and calculate totals
+            var expensesByDescription = Expenses
+                .GroupBy(e => e.Description)
+                .Select(g => new
+                {
+                    Description = g.Key,
+                    Total = g.Sum(e => e.Amount)
+                })
+                .OrderByDescending(x => x.Total)
+                .Take(10) // Show top 10 categories
+                .ToList();
+
+            var colors = new[]
+            {
+                SKColors.DodgerBlue,
+                SKColors.Tomato,
+                SKColors.MediumSeaGreen,
+                SKColors.Gold,
+                SKColors.MediumPurple,
+                SKColors.Coral,
+                SKColors.DeepSkyBlue,
+                SKColors.LightSeaGreen,
+                SKColors.Orange,
+                SKColors.HotPink
+            };
+
+            var series = new List<ISeries>();
+            for (int i = 0; i < expensesByDescription.Count; i++)
+            {
+                var item = expensesByDescription[i];
+                series.Add(new PieSeries<decimal>
+                {
+                    Values = new[] { item.Total },
+                    Name = $"{item.Description} ({item.Total:C})",
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsSize = 12,
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+                    DataLabelsFormatter = point => $"{point.PrimaryValue:C}",
+                    Fill = new SolidColorPaint(colors[i % colors.Length])
+                });
+            }
+
+            PieChartSeries = series.ToArray();
+        }
+
+        private void UpdateLineChart()
+        {
+            if (!Expenses.Any())
+            {
+                LineChartSeries = Array.Empty<ISeries>();
+                return;
+            }
+
+            // Group by month and calculate totals
+            var monthlyTotals = Expenses
+                .GroupBy(e => new DateTime(e.Date.Year, e.Date.Month, 1))
+                .OrderBy(g => g.Key)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    Total = g.Sum(e => e.Amount)
+                })
+                .ToList();
+
+            var values = monthlyTotals.Select(x => (double)x.Total).ToArray();
+
+            LineChartSeries = new ISeries[]
+            {
+                new LineSeries<double>
+                {
+                    Values = values,
+                    Name = "Monthly Spending",
+                    Fill = null,
+                    GeometrySize = 10,
+                    Stroke = new SolidColorPaint(SKColors.DodgerBlue) { StrokeThickness = 3 },
+                    GeometryStroke = new SolidColorPaint(SKColors.DodgerBlue) { StrokeThickness = 3 },
+                    GeometryFill = new SolidColorPaint(SKColors.White)
+                }
+            };
         }
 
         /// <summary>
