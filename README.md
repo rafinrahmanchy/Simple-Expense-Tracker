@@ -2,8 +2,8 @@
 
 A modern, user-friendly WPF desktop application for tracking and managing personal expenses with persistent JSON-based storage. This semester final project demonstrates best practices in C# development, including proper error handling, data validation, MVVM architecture, and file I/O operations.
 
-![.NET Version](https://img.shields.io/badge/.NET-10.0-512BD4)
-![Language](https://img.shields.io/badge/Language-C%2313-green)
+![.NET Version](https://img.shields.io/badge/.NET-6.0-blue)
+![Language](https://img.shields.io/badge/Language-C%23-green)
 ![Platform](https://img.shields.io/badge/Platform-Windows-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
@@ -35,21 +35,11 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 ## Technical Highlights
 
 ### Code Quality
-- ✅ Well-organized and modular code structure with clear separation of concerns
+- ✅ Well-organized and modular code structure
 - ✅ Comprehensive XML documentation comments
-- ✅ Follows Microsoft C# 13 coding standards
+- ✅ Follows Microsoft C# coding standards
 - ✅ Proper use of LINQ for data querying
 - ✅ Null-safety with nullable reference types enabled
-- ✅ Modern error handling with custom exception types
-- ✅ Automated backups for data integrity
-
-### Modern .NET 10 Features
-- **Latest C# Language Features:** C# 13 syntax (records, nullable annotations, etc.)
-- **Dependency Injection Ready:** Infrastructure for Microsoft.Extensions.DependencyInjection
-- **Configuration Management:** appsettings.json support for environment-specific settings
-- **Adaptive Path Detection:** Automatic storage path resolution based on environment
-- **Async/Await Support:** Async command infrastructure (IAsyncRelayCommand)
-- **Enhanced JSON Serialization:** Modern System.Text.Json with advanced options
 
 ### Data Structures & Algorithms
 - **ObservableCollection<T>** - For real-time UI updates
@@ -61,8 +51,7 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 - **MVVM Pattern** - Clear separation between UI (View), data (Model), and logic (ViewModel)
 - **RelayCommand Implementation** - Generic command pattern for bindings
 - **INotifyPropertyChanged** - Real-time UI synchronization
-- **Service Layer** - FileService and ConfigurationService abstractions
-- **Modular Design** - Easily extensible for future enhancements
+- **Service Layer** - FileService abstracts data persistence
 
 ### Error Handling & Validation
 - Input validation for all user entries
@@ -79,30 +68,14 @@ A modern, user-friendly WPF desktop application for tracking and managing person
 
 ## Requirements
 
-- **Operating System:** Windows 10 or later (Windows 11 recommended)
-- **.NET Desktop Runtime:** .NET 10.0 or later
-- **RAM:** 512 MB minimum (2 GB recommended)
-- **Disk Space:** 500 MB for installation + data storage
-
-**Note:** This is a .NET 10.0 build. For .NET 6.0 compatibility, see the [legacy branch](https://github.com/rafinrahmanchy/Simple-Expense-Tracker/tree/net6.0).
+- **Operating System:** Windows 7 or later
+- **.NET Desktop Runtime:** .NET 6.0 or later
+- **RAM:** 256 MB minimum
+- **Disk Space:** 100 MB for installation
 
 ## Installation
 
-### Option 1: Automated Installation (Recommended)
-
-On Windows, simply run the automated installation script:
-
-```bash
-build-and-run.bat
-```
-
-This script automatically handles:
-- .NET SDK verification
-- NuGet package restoration  
-- Project build
-- Application launch
-
-### Option 2: Build from Source
+### Option 1: Build from Source
 
 1. **Clone the Repository**
    ```bash
@@ -111,7 +84,7 @@ This script automatically handles:
    ```
 
 2. **Ensure Prerequisites**
-   - Install [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+   - Install [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) or later
    - Verify installation: `dotnet --version`
 
 3. **Build the Project**
@@ -124,24 +97,22 @@ This script automatically handles:
    dotnet run --project ExpenseTracker.csproj
    ```
 
-### Option 3: Build and Run with Visual Studio
+### Option 2: Build and Run with Visual Studio
 
 1. Open `Expense Tracker.sln` in Visual Studio 2022 or later
 2. Build the solution (Build > Build Solution)
 3. Press F5 to run the application
 
-### Option 4: Run Published Executable
+### Option 3: Run Published Executable
 
 1. **Publish the Application**
    ```bash
-   dotnet publish -c Release -r win-x64 -o ./publish
+   dotnet publish -c Release -o ./publish
    ```
 
 2. **Run the Executable**
    - Navigate to the `publish` folder
    - Run `ExpenseTracker.exe`
-
-For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
 ## Usage Guide
 
@@ -327,7 +298,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 ## Troubleshooting
 
 ### Application won't start
-- Ensure .NET 10.0 runtime is installed: `dotnet --version`
+- Ensure .NET 6.0 runtime is installed: `dotnet --version`
 - Check Windows event viewer for error details
 - Try running from Visual Studio for detailed error messages
 
@@ -340,14 +311,10 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 - Verify write permissions in the application directory
 - Check available disk space
 - Ensure JSON file is not corrupted (delete and restart)
-- Check adaptive path configuration in appsettings.json
 
-### Build or runtime errors
-- Verify .NET 10.0 SDK is installed: `dotnet --version`
-- Clear NuGet cache: `dotnet nuget locals all --clear`
-- Rebuild: `dotnet clean && dotnet build`
-
-For more detailed troubleshooting, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
+### UI freezing
+- This is a known issue that has been fixed in version 1.0.0
+- Update to the latest version if you experience this
 
 ## Performance
 
@@ -390,12 +357,10 @@ Requirements:
 
 ## Acknowledgments
 
-- Built with [.NET 10.0](https://dotnet.microsoft.com/)
+- Built with [.NET 6.0](https://dotnet.microsoft.com/)
 - WPF framework for modern desktop UI
 - System.Text.Json for efficient serialization
-- Microsoft.Extensions for configuration and logging
 - MVVM pattern best practices
-- LiveChartsCore for data visualization
 
 ## Support
 
@@ -407,8 +372,8 @@ For issues, questions, or suggestions:
 
 ---
 
-**Last Updated:** March 2026
-**Version:** 2.0.0 (.NET 10.0)
+**Last Updated:** December 2025
+**Version:** 1.0.0
 **Status:** ✅ Production Ready
 
-Made with ❤️ for .NET 10 Modern Development
+Made with ❤️ for semester final project

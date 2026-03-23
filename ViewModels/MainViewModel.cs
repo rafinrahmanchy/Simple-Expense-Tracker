@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -8,17 +7,12 @@ using System.Windows;
 using System.Windows.Input;
 using ExpenseTracker.Models;
 using ExpenseTracker.Services;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.Painting;
-using SkiaSharp;
 
 namespace ExpenseTracker.ViewModels
 {
     /// <summary>
     /// Main view model for the Expense Tracker application.
     /// Manages the state of expenses, handles user interactions, and coordinates with the FileService.
-    /// Optimized for .NET 10.0 with modern patterns and error handling.
     /// </summary>
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -29,9 +23,6 @@ namespace ExpenseTracker.ViewModels
         private DateTime _dateInput = DateTime.Now;
         private string _monthSummary = string.Empty;
         private bool _isUpdatingSelectedExpense = false;
-        private ISeries[] _pieChartSeries = Array.Empty<ISeries>();
-        private ISeries[] _lineChartSeries = Array.Empty<ISeries>();
-        private bool _isBusy = false;
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -119,31 +110,9 @@ namespace ExpenseTracker.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the pie chart series for expense breakdown.
+        /// Gets the command for adding a new expense.
         /// </summary>
-        public ISeries[] PieChartSeries
-        {
-            get => _pieChartSeries;
-            set { _pieChartSeries = value; OnPropertyChanged(); }
-        }
-
-        /// <summary>
-        /// Gets or sets the line chart series for spending trends.
-        /// </summary>
-        public ISeries[] LineChartSeries
-        {
-            get => _lineChartSeries;
-            set { _lineChartSeries = value; OnPropertyChanged(); }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the view model is currently processing a long operation.
-        /// </summary>
-        public bool IsBusy
-        {
-            get => _isBusy;
-            set { _isBusy = value; OnPropertyChanged(); }
-        }
+        public ICommand AddCommand { get; }
 
         /// <summary>
         /// Gets the command for updating the selected expense.
@@ -186,44 +155,25 @@ namespace ExpenseTracker.ViewModels
 
         private void LoadExpenses()
         {
-            try
+            var data = _fileService.LoadData();
+            Expenses.Clear();
+            foreach (var item in data)
             {
-                IsBusy = true;
-                var data = _fileService.LoadData();
-                Expenses.Clear();
-                foreach (var item in data)
-                {
-                    Expenses.Add(item);
-                }
-                CalculateSummary(null);
+                Expenses.Add(item);
             }
-            catch (Exception ex)
-            {
-                var message = $"Error loading expenses: {ex.Message}";
-                System.Diagnostics.Debug.WriteLine(message);
-                MessageBox.Show(message, "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            CalculateSummary(null);
         }
 
         private void SaveExpenses()
         {
             try
             {
-                IsBusy = true;
                 _fileService.SaveData(Expenses);
                 CalculateSummary(null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving expenses: {ex.Message}", "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
 
@@ -334,103 +284,6 @@ namespace ExpenseTracker.ViewModels
             {
                 MonthSummary = "No expenses recorded.";
             }
-
-            UpdateCharts();
-        }
-
-        private void UpdateCharts()
-        {
-            UpdatePieChart();
-            UpdateLineChart();
-        }
-
-        private void UpdatePieChart()
-        {
-            if (!Expenses.Any())
-            {
-                PieChartSeries = Array.Empty<ISeries>();
-                return;
-            }
-
-            // Group expenses by description and calculate totals
-            var expensesByDescription = Expenses
-                .GroupBy(e => e.Description)
-                .Select(g => new
-                {
-                    Description = g.Key,
-                    Total = g.Sum(e => e.Amount)
-                })
-                .OrderByDescending(x => x.Total)
-                .Take(10) // Show top 10 categories
-                .ToList();
-
-            var colors = new[]
-            {
-                SKColors.DodgerBlue,
-                SKColors.Tomato,
-                SKColors.MediumSeaGreen,
-                SKColors.Gold,
-                SKColors.MediumPurple,
-                SKColors.Coral,
-                SKColors.DeepSkyBlue,
-                SKColors.LightSeaGreen,
-                SKColors.Orange,
-                SKColors.HotPink
-            };
-
-            var series = new List<ISeries>();
-            for (int i = 0; i < expensesByDescription.Count; i++)
-            {
-                var item = expensesByDescription[i];
-                series.Add(new PieSeries<decimal>
-                {
-                    Values = new[] { item.Total },
-                    Name = $"{item.Description} ({item.Total:C})",
-                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
-                    DataLabelsSize = 12,
-                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
-                    DataLabelsFormatter = point => $"{point.PrimaryValue:C}",
-                    Fill = new SolidColorPaint(colors[i % colors.Length])
-                });
-            }
-
-            PieChartSeries = series.ToArray();
-        }
-
-        private void UpdateLineChart()
-        {
-            if (!Expenses.Any())
-            {
-                LineChartSeries = Array.Empty<ISeries>();
-                return;
-            }
-
-            // Group by month and calculate totals
-            var monthlyTotals = Expenses
-                .GroupBy(e => new DateTime(e.Date.Year, e.Date.Month, 1))
-                .OrderBy(g => g.Key)
-                .Select(g => new
-                {
-                    Month = g.Key,
-                    Total = g.Sum(e => e.Amount)
-                })
-                .ToList();
-
-            var values = monthlyTotals.Select(x => (double)x.Total).ToArray();
-
-            LineChartSeries = new ISeries[]
-            {
-                new LineSeries<double>
-                {
-                    Values = values,
-                    Name = "Monthly Spending",
-                    Fill = null,
-                    GeometrySize = 10,
-                    Stroke = new SolidColorPaint(SKColors.DodgerBlue) { StrokeThickness = 3 },
-                    GeometryStroke = new SolidColorPaint(SKColors.DodgerBlue) { StrokeThickness = 3 },
-                    GeometryFill = new SolidColorPaint(SKColors.White)
-                }
-            };
         }
 
         /// <summary>

@@ -2,46 +2,28 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>ExpenseTracker.App</StartupObject>
-    <LangVersion>latest</LangVersion>
     
     <!-- Metadata -->
     <Title>Expense Tracker</Title>
-    <Description>A modern, user-friendly WPF desktop application for tracking and managing personal expenses with persistent JSON-based storage. Built with .NET 10.0 and optimized for adaptive environments.</Description>
-    <Author>Rafin Rahman Chy</Author>
-    <Version>2.0.0</Version>
-    <PackageProjectUrl>https://github.com/rafinrahmanchy/Simple-Expense-Tracker</PackageProjectUrl>
+    <Description>A user-friendly WPF desktop application for tracking and managing personal expenses with persistent JSON-based storage.</Description>
+    <Author>Your Name</Author>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>https://github.com/yourusername/ExpenseTracker</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/rafinrahmanchy/Simple-Expense-Tracker</RepositoryUrl>
+    <RepositoryUrl>https://github.com/yourusername/ExpenseTracker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
-    <!-- Documentation and analysis -->
+    <!-- Generate XML documentation comments -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    
-    <!-- Runtime settings -->
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>false</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <!-- Include resources in the build -->
   <ItemGroup>
     <Resource Include="Resources\expense-icon.png" />
-  </ItemGroup>
-
-  <!-- NuGet package references -->
-  <ItemGroup>
-    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.10.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
   </ItemGroup>
 
 </Project>
