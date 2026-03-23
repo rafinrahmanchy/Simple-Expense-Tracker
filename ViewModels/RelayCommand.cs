@@ -45,7 +45,10 @@ namespace ExpenseTracker.ViewModels
         /// <param name="parameter">The command parameter.</param>
         public void Execute(object? parameter)
         {
-            _execute(parameter);
+            if (CanExecute(parameter))
+            {
+                _execute(parameter);
+            }
         }
 
         /// <summary>

@@ -69,5 +69,22 @@ namespace ExpenseTracker.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        /// <summary>
+        /// Creates a deep copy of this expense.
+        /// </summary>
+        /// <returns>A new Expense instance with the same values.</returns>
+        public Expense Clone() => new()
+        {
+            Id = Id,
+            Description = Description,
+            Amount = Amount,
+            Date = Date
+        };
+
+        /// <summary>
+        /// Returns a string representation of the expense.
+        /// </summary>
+        public override string ToString() => $"{Description} - {Amount:C} ({Date:d})";
     }
 }

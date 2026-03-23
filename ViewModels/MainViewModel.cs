@@ -18,6 +18,7 @@ namespace ExpenseTracker.ViewModels
     /// <summary>
     /// Main view model for the Expense Tracker application.
     /// Manages the state of expenses, handles user interactions, and coordinates with the FileService.
+    /// Optimized for .NET 10.0 with modern patterns and error handling.
     /// </summary>
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -30,6 +31,7 @@ namespace ExpenseTracker.ViewModels
         private bool _isUpdatingSelectedExpense = false;
         private ISeries[] _pieChartSeries = Array.Empty<ISeries>();
         private ISeries[] _lineChartSeries = Array.Empty<ISeries>();
+        private bool _isBusy = false;
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -135,9 +137,13 @@ namespace ExpenseTracker.ViewModels
         }
 
         /// <summary>
-        /// Gets the command for adding a new expense.
+        /// Gets or sets a value indicating whether the view model is currently processing a long operation.
         /// </summary>
-        public ICommand AddCommand { get; }
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set { _isBusy = value; OnPropertyChanged(); }
+        }
 
         /// <summary>
         /// Gets the command for updating the selected expense.
@@ -180,25 +186,44 @@ namespace ExpenseTracker.ViewModels
 
         private void LoadExpenses()
         {
-            var data = _fileService.LoadData();
-            Expenses.Clear();
-            foreach (var item in data)
+            try
             {
-                Expenses.Add(item);
+                IsBusy = true;
+                var data = _fileService.LoadData();
+                Expenses.Clear();
+                foreach (var item in data)
+                {
+                    Expenses.Add(item);
+                }
+                CalculateSummary(null);
             }
-            CalculateSummary(null);
+            catch (Exception ex)
+            {
+                var message = $"Error loading expenses: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine(message);
+                MessageBox.Show(message, "Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private void SaveExpenses()
         {
             try
             {
+                IsBusy = true;
                 _fileService.SaveData(Expenses);
                 CalculateSummary(null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving expenses: {ex.Message}", "Save Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
